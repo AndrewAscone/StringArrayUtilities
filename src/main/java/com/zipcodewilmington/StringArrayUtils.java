@@ -2,7 +2,9 @@ package com.zipcodewilmington;
 
 import com.sun.javafx.binding.StringFormatter;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * Created by leon on 1/29/18.
@@ -179,7 +181,23 @@ public class StringArrayUtils {
      * @return array of Strings with consecutive duplicates removes
      */ // TODO
     public static String[] removeConsecutiveDuplicates(String[] array) {
-        return null;
+        List<String> list = new ArrayList<String>();
+
+        for (int i = 0; i < array.length - 1; i++){
+            if (array[i] != array[i+1]){
+                list.add(array[i]);
+            }
+        }
+
+        list.add(array[array.length - 1]);
+        String[] result = new String[list.size()];
+        result = list.toArray(result);
+
+        for(String i : result){
+            System.out.println(i + " ");
+        }
+
+        return result;
     }
 
     /**
