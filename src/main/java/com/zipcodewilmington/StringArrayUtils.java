@@ -1,5 +1,7 @@
 package com.zipcodewilmington;
 
+import com.sun.javafx.binding.StringFormatter;
+
 import java.util.Arrays;
 
 /**
@@ -95,21 +97,47 @@ public class StringArrayUtils {
      * @return true if each letter in the alphabet has been used in the array
      */ // TODO
     public static boolean isPangramic(String[] array) {
-        StringBuilder sb = new StringBuilder();
-        String str = String.join(",", array);
+        String str = String.join(" ", array).replaceAll(" ", "");
         str = str.toLowerCase();
-        String alphabet = "abcdefghijklmnopqrstuvwxyz";
-        //System.out.println(str);
+        System.out.println(str);
+//        String alphabet = "abcdefghijklmnopqrstuvwxyz";
+//        String result = "";
+//
+//        for (int i = 0; i <= alphabet.length() - 1; i++){
+//            for (int j = 0; j <= str.length() - 1; j++){
+//                if(alphabet.indexOf(str.charAt(i)) == str.indexOf(j)){
+//
+//                    System.out.println(result);
+//                    break;
+//                }
+//            }
+//        }
+//
+//        if(result.equals(alphabet)){
+//            return true;
+//        }
+//        else{
+//            return false;
+//        }
+        boolean[] check = new boolean[26];
+        int cell = 0;
 
-        for (int i = array.length - 1; i <= array.length; i++){
-            for (int j = 0; j <= 26; j++){
-
+        for(int i = 0; i < str.length(); i++)
+        {
+            if('a'<= str.charAt(i) && str.charAt(i) <= 'z')
+            {
+                cell = str.charAt(i) - 'a';
+                check[cell] = true;
             }
         }
-
-
-
-        return false;
+        for(int i = 0; i <= 25; i++)
+        {
+            if(!check[i])
+            {
+                return false;
+            }
+        }
+        return true;
     }
 
     /**
