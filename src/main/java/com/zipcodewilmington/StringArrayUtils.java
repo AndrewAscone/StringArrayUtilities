@@ -205,7 +205,36 @@ public class StringArrayUtils {
      * @return array of Strings with each consecutive duplicate occurrence concatenated as a single string in an array of Strings
      */ // TODO
     public static String[] packConsecutiveDuplicates(String[] array) {
-        return null;
+        //List<String> list = Arrays.asList(array);
+        String result = "";
+        //String.join to combine elements?
+        //use split to make an array of the string when complete
+        //if statement - true joins characters, false makes a space for the eventual array split
+        String joinedList = String.join("", array);
+
+        result += Character.toString(joinedList.charAt(0));
+        for(int i = 1; i < joinedList.length(); i++){
+            if(joinedList.charAt(i) == joinedList.charAt(i-1)){
+                String matchedLetter = Character.toString(joinedList.charAt(i));
+                result += String.join("",matchedLetter);
+            }
+            else
+            {
+                String unmatchedLetter = Character.toString(joinedList.charAt(i));
+//                String previousLetter = Character.toString(joinedList.charAt(i-1));
+//                result += String.join("",previousLetter);
+                result += " ";
+                result += String.join("",unmatchedLetter);
+                //result += " ";
+            }
+        }
+
+        System.out.println(joinedList);
+        System.out.println(result);
+
+        String[] endArray = result.split(" ");
+
+        return endArray;
     }
 
 
